@@ -1,0 +1,12 @@
+[Unit]
+Description=biliup live recorder
+
+[Service]
+WorkingDirectory=/opt
+Type=forking
+ExecStartPre=rm -f /opt/watch_process.pid
+ExecStart=biliup --config config.toml start
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

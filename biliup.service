@@ -5,8 +5,9 @@ Description=biliup live recorder
 WorkingDirectory=/opt
 Type=forking
 ExecStartPre=rm -f /opt/watch_process.pid
-ExecStart=biliup --config config.toml start
+ExecStart=biliup --config config.yaml start
 Restart=always
 
 [Install]
 WantedBy=multi-user.target
+

@@ -1,4 +1,7 @@
 FROM python:latest
+RUN pip3 install biliup
+
+# add systemd
 RUN apt update \
   && echo 'tzdata tzdata/Areas select Asia' >> /root/preseed.cfg \
   && echo 'tzdata tzdata/Zones/Asia select Shanghai' >> /root/preseed.cfg \
@@ -21,5 +24,7 @@ RUN apt update \
     /lib/systemd/system/plymouth* \
     /lib/systemd/system/systemd-update-utmp*
 ENTRYPOINT ["/bin/systemd"]
-COPY biliup.service /etc/systemd/system
+
+# add services
+COPY biliup.service /etc/systemd/system/
 RUN systemctl enable biliup

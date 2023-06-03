@@ -29,5 +29,4 @@ ENTRYPOINT ["/bin/systemd"]
 RUN apt update && apt install -y ffmpeg && rm -rf /var/lib/apt/lists/*
 
 # add services
-COPY biliup.service /etc/systemd/system/
-RUN systemctl enable biliup
+COPY biliup@.service /etc/systemd/system/

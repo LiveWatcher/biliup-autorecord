@@ -1,0 +1,15 @@
+[Unit]
+Description=biliup live recorder for room %i
+StartLimitIntervalSec=0
+
+[Service]
+WorkingDirectory=/data/%i
+Type=forking
+Restart=always
+RestartSec=1
+ExecStartPre=rm -f watch_process.pid
+ExecStartPre=mkdir -p backup
+ExecStart=biliup --config config.yaml start
+
+[Install]
+WantedBy=multi-user.target
